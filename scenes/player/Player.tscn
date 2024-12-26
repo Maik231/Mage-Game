@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=3 uid="uid://byposuhsh7m5p"]
+
+[ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_vilkn"]
+[ext_resource type="Texture2D" uid="uid://bd0vnrv1bhmmb" path="res://aseprite/player.png" id="2_42yjf"]
+[ext_resource type="PackedScene" uid="uid://y4rhwa8v4ct4" path="res://scenes/State Machine/StateMachine.tscn" id="2_q7re2"]
+[ext_resource type="Script" path="res://scripts/player/Player States/IdleState.gd" id="3_35l1h"]
+[ext_resource type="Script" path="res://scripts/player/Player States/WalkingState.gd" id="3_qodfh"]
+[ext_resource type="Script" path="res://scripts/player/Player States/JumpingState.gd" id="4_b4imd"]
+[ext_resource type="Script" path="res://scripts/player/Player States/FallingState.gd" id="5_g7eb0"]
+[ext_resource type="Script" path="res://scripts/StateLable.gd" id="7_4nguo"]
+[ext_resource type="Script" path="res://scripts/player/Player States/WingState.gd" id="8_mlwnm"]
+[ext_resource type="Script" path="res://scripts/speed_label.gd" id="10_yd0vi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hjf3y"]
+radius = 8.0
+height = 16.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_vilkn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5.96046e-07, 0.25)
+texture = ExtResource("2_42yjf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_hjf3y")
+
+[node name="MovementStateMachine" parent="." node_paths=PackedStringArray("current_state") instance=ExtResource("2_q7re2")]
+current_state = NodePath("WalkingState")
+
+[node name="IdleState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("3_35l1h")
+
+[node name="WalkingState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("3_qodfh")
+
+[node name="JumpingState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("4_b4imd")
+
+[node name="FallingState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("5_g7eb0")
+
+[node name="WingState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("8_mlwnm")
+
+[node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
+offset_left = -21.0
+offset_top = -60.0
+offset_right = 21.0
+offset_bottom = -37.0
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_4nguo")
+state_machine = NodePath("../MovementStateMachine")
+
+[node name="SpeedLabel" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = -12.0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_yd0vi")
