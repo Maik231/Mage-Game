@@ -7,6 +7,7 @@ const DECELLERATION : int = SPEED * 3
 const TERMINAL_VELOCITY : int = 400
 var has_wings : bool = false
 var wing : Wing
+@export var hook : Hook
 
 @onready var movement_state_machine : StateMachine = $MovementStateMachine
 
@@ -21,6 +22,10 @@ func _physics_process(delta : float) -> void:
 
 func _unhandled_input(event : InputEvent) -> void:
 	movement_state_machine.unhandled_input(event)
+
+func _input(event):
+	if event.is_action_pressed("hook"):
+		hook.shoot()
 
 class Wing:
 	var horizontal_speed : int

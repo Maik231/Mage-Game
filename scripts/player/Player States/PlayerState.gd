@@ -6,5 +6,6 @@ const JUMPING : String = "JumpingState"
 const FALLING : String = "FallingState"
 const IDLE : String = "IdleState"
 const WING : String = "WingState"
+const HOOK : String = "HookState"
 
 @onready var player : Player = owner as Player
