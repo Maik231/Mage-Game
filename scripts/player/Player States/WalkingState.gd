@@ -13,11 +13,11 @@ func physics_process(delta : float) -> void:
 	player.move_and_slide()
 	
 	if Input.is_action_just_pressed("jump"):
-		finished.emit(JUMPING)
+		finished.emit(PlayerStates.JUMPING)
 	elif not player.is_on_floor():
-		finished.emit(FALLING)
+		finished.emit(PlayerStates.FALLING)
 	elif player.velocity == Vector2.ZERO:
-		finished.emit(IDLE)
+		finished.emit(PlayerStates.IDLE)
 
 func move(delta : float) -> void:
 	var direction = Input.get_axis("left", "right")

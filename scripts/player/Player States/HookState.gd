@@ -9,7 +9,7 @@ func process(delta : float) -> void:
 	pass
 
 func physics_process(delta : float) -> void:
-	if player.position.distance_to(destination) > 10:
+	if player.position.distance_to(destination) > 5:
 		player.velocity = (destination - player.position).normalized() * player.hook.player_travel_speed
 		player.move_and_slide()
 	else:
@@ -18,7 +18,7 @@ func physics_process(delta : float) -> void:
 func handle_input(event : InputEvent):
 	if event.is_action_pressed("jump"):
 		player.hook.end()
-		finished.emit(FALLING)
+		finished.emit(PlayerStates.JUMPING)
 
 func exit() -> void:
 	pass

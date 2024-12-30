@@ -27,7 +27,7 @@ func physics_process(delta : float) -> void:
 	player.move_and_slide()
 	
 	if player.is_on_floor():
-		finished.emit(WALKING)
+		finished.emit(PlayerStates.WALKING)
 
 func handle_input(event : InputEvent):
 	pass

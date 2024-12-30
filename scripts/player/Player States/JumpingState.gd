@@ -5,7 +5,7 @@ extends PlayerState
 
 func enter(old_state_name : String, data := {}) -> void:
 	if player.has_wings:
-		finished.emit(WING)
+		finished.emit(PlayerStates.WING)
 		return
 	player.velocity.y = player.JUMP_VELOCITY
 
@@ -18,7 +18,7 @@ func physics_process(delta : float) -> void:
 	player.move_and_slide()
 	
 	if player.velocity.y >= 0 or not Input.is_action_pressed("jump"):
-		finished.emit(FALLING)
+		finished.emit(PlayerStates.FALLING)
 
 func handle_input(event : InputEvent):
 	pass

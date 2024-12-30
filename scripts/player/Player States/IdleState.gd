@@ -8,11 +8,11 @@ func process(delta : float) -> void:
 
 func physics_process(delta : float) -> void:
 	if Input.is_action_just_pressed("jump"):
-		finished.emit(JUMPING)
+		finished.emit(PlayerStates.JUMPING)
 	elif Input.get_axis("left", "right"):
-		finished.emit(WALKING)
+		finished.emit(PlayerStates.WALKING)
 	elif not player.is_on_floor():
-		finished.emit(FALLING)
+		finished.emit(PlayerStates.FALLING)
 
 func handle_input(event : InputEvent):
 	pass

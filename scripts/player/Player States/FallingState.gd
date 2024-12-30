@@ -4,7 +4,7 @@ extends PlayerState
 
 func enter(old_state_name : String, data := {}) -> void:
 	if player.has_wings:
-		finished.emit(WING)
+		finished.emit(PlayerStates.WING)
 
 func process(delta : float) -> void:
 	pass
@@ -15,7 +15,7 @@ func physics_process(delta : float) -> void:
 	player.move_and_slide()
 	
 	if player.is_on_floor():
-		finished.emit(WALKING)
+		finished.emit(PlayerStates.WALKING)
 
 func apply_gravity(delta : float, gravity_factor : float = 1):
 	player.velocity += player.get_gravity() * delta
