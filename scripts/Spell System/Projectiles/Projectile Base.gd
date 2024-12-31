@@ -8,6 +8,7 @@ extends Area2D
 
 var direction : Vector2
 
+var object
 
 func _ready():
 	if time_limit:

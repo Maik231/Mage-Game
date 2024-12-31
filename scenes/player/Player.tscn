@@ -79,6 +79,7 @@ script = ExtResource("10_yd0vi")
 [node name="Hook2" type="Node" parent="."]
 
 [node name="Hook" parent="Hook2" instance=ExtResource("12_ic1co")]
+visible = false
 
 [node name="Spells" type="Node2D" parent="."]
 
