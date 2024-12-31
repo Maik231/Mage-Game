@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dapebmkonfnqt"]
+
+[ext_resource type="Script" path="res://scripts/Spell System/Projectiles/Projectile Base.gd" id="1_vt743"]
+[ext_resource type="Texture2D" uid="uid://cwf11u7q8vmsp" path="res://aseprite/Tilemap.png" id="2_x6ygo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ibsf"]
+radius = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aw6xm"]
+atlas = ExtResource("2_x6ygo")
+region = Rect2(0, 144, 16, 16)
+
+[node name="StraightProjectileFireBall" type="Area2D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_vt743")
+speed = 400.0
+time_limit = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.430407, -0.404053)
+shape = SubResource("CircleShape2D_4ibsf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_aw6xm")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

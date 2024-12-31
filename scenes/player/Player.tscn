@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://byposuhsh7m5p"]
+[gd_scene load_steps=16 format=3 uid="uid://byposuhsh7m5p"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_vilkn"]
 [ext_resource type="Texture2D" uid="uid://bd0vnrv1bhmmb" path="res://aseprite/player.png" id="2_42yjf"]
@@ -12,16 +12,19 @@
 [ext_resource type="Script" path="res://scripts/player/Player States/HookState.gd" id="9_2utxg"]
 [ext_resource type="Script" path="res://scripts/speed_label.gd" id="10_yd0vi"]
 [ext_resource type="PackedScene" uid="uid://crled6agy4y1w" path="res://scenes/hook.tscn" id="12_ic1co"]
+[ext_resource type="PackedScene" uid="uid://cogqokesa50uy" path="res://scenes/Spell System/Base Spell/ProjectileSpell.tscn" id="13_xwrdh"]
+[ext_resource type="PackedScene" uid="uid://dapebmkonfnqt" path="res://scenes/Spell System/Projectiles/StraightProjectileFireBall.tscn" id="14_ltifo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hjf3y"]
 radius = 8.0
 height = 16.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hook")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hook", "current_spell")]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_vilkn")
 hook = NodePath("Hook2/Hook")
+current_spell = NodePath("Spells/ProjectileSpell")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -76,3 +79,9 @@ script = ExtResource("10_yd0vi")
 [node name="Hook2" type="Node" parent="."]
 
 [node name="Hook" parent="Hook2" instance=ExtResource("12_ic1co")]
+
+[node name="Spells" type="Node2D" parent="."]
+
+[node name="ProjectileSpell" parent="Spells" instance=ExtResource("13_xwrdh")]
+cast_cooldown = 0.2
+projectile = ExtResource("14_ltifo")
