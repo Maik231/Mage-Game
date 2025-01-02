@@ -18,7 +18,11 @@ func physics_process(delta : float) -> void:
 func handle_input(event : InputEvent):
 	if event.is_action_pressed("jump"):
 		player.hook.end()
-		finished.emit(PlayerStates.JUMPING)
+		if player.velocity == Vector2.ZERO:
+			finished.emit(PlayerStates.JUMPING)
+		else:
+			player.velocity *= 1.3
+			finished.emit(PlayerStates.FALLING)
 
 func exit() -> void:
 	pass

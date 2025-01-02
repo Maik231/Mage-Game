@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://bi6fkufilkkg5"]
+
+[ext_resource type="Script" path="res://scripts/Enemys/Enemy1.gd" id="1_v78eh"]
+[ext_resource type="Texture2D" uid="uid://cwf11u7q8vmsp" path="res://aseprite/Tilemap.png" id="1_xhnvo"]
+[ext_resource type="PackedScene" uid="uid://b2bqwshnpicns" path="res://scenes/Enemys/hitbox.tscn" id="3_nfy6y"]
+[ext_resource type="PackedScene" uid="uid://bi5qrtw67nbc5" path="res://scenes/HealthManager.tscn" id="4_dq8hc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12mmt"]
+atlas = ExtResource("1_xhnvo")
+region = Rect2(0, 160, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lqva"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wo4i5"]
+size = Vector2(10, 11)
+
+[node name="Enemy1" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_v78eh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_12mmt")
+
+[node name="hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_2lqva")
+
+[node name="hitbox" parent="." instance=ExtResource("3_nfy6y")]
+damage = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_wo4i5")
+
+[node name="HealthManager" parent="." instance=ExtResource("4_dq8hc")]
+max_hp = 100
+invincible_time = 0.0

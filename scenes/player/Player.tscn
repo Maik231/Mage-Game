@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://byposuhsh7m5p"]
+[gd_scene load_steps=17 format=3 uid="uid://byposuhsh7m5p"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_vilkn"]
 [ext_resource type="Texture2D" uid="uid://bd0vnrv1bhmmb" path="res://aseprite/player.png" id="2_42yjf"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://crled6agy4y1w" path="res://scenes/hook.tscn" id="12_ic1co"]
 [ext_resource type="PackedScene" uid="uid://cogqokesa50uy" path="res://scenes/Spell System/Base Spell/ProjectileSpell.tscn" id="13_xwrdh"]
 [ext_resource type="PackedScene" uid="uid://dapebmkonfnqt" path="res://scenes/Spell System/Projectiles/StraightProjectileFireBall.tscn" id="14_ltifo"]
+[ext_resource type="PackedScene" uid="uid://bi5qrtw67nbc5" path="res://scenes/HealthManager.tscn" id="15_01med"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hjf3y"]
 radius = 8.0
@@ -86,3 +87,6 @@ visible = false
 [node name="ProjectileSpell" parent="Spells" instance=ExtResource("13_xwrdh")]
 cast_cooldown = 0.2
 projectile = ExtResource("14_ltifo")
+
+[node name="HealthManager" parent="." instance=ExtResource("15_01med")]
+max_hp = 100

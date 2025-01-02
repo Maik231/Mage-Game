@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://ddi7ok7oobws6"]
+[gd_scene load_steps=8 format=4 uid="uid://ddi7ok7oobws6"]
 
 [ext_resource type="PackedScene" uid="uid://byposuhsh7m5p" path="res://scenes/player/Player.tscn" id="1_jicic"]
 [ext_resource type="Texture2D" uid="uid://cwf11u7q8vmsp" path="res://aseprite/Tilemap.png" id="2_pxtja"]
+[ext_resource type="PackedScene" uid="uid://bi6fkufilkkg5" path="res://scenes/Enemys/Enemy1.tscn" id="3_b1jpp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y71w3"]
 texture = ExtResource("2_pxtja")
@@ -28,7 +29,7 @@ sources/0 = SubResource("TileSetAtlasSource_882yt")
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_jicic")]
-position = Vector2(544, 616)
+position = Vector2(539, 615)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(2, 2)
@@ -40,5 +41,8 @@ tile_map_data = PackedByteArray("AAAAACcAAAAAAAAAAAABACcAAAAAAAAAAAACACcAAAAAAAA
 tile_set = SubResource("TileSet_nva61")
 
 [node name="Platforms" type="TileMapLayer" parent="TileMaps"]
-tile_map_data = PackedByteArray("AAAWACMAAAAAAAUAAAATACUAAAAAAAUAAAAZACEAAAAAAAUAAAAcAB8AAAAAAAUAAAAfAB0AAAAAAAUAAAA=")
+tile_map_data = PackedByteArray("AAAWACMAAAAAAAUAAAATACUAAAAAAAUAAAAZACEAAAAAAAUAAAAcAB8AAAAAAAUAAAAfAB0AAAAAAAUAAAAkACMAAAAAAAUAAAAnACMAAAAAAAUAAAA=")
 tile_set = SubResource("TileSet_7qrle")
+
+[node name="Enemy1" parent="." instance=ExtResource("3_b1jpp")]
+position = Vector2(400, 615)

@@ -11,11 +11,12 @@ var wing : Wing
 @export var current_spell : SpellBase
 
 @onready var movement_state_machine : StateMachine = $MovementStateMachine
+@onready var health_manager = $HealthManager
 
 func _ready():
 	wing = Wing.new()
 	hook.equip(self)
-
+ 
 func _process(delta : float) -> void:
 	movement_state_machine.process(delta)
 
@@ -36,6 +37,14 @@ func _unhandled_input(event : InputEvent) -> void:
 func _input(event : InputEvent):
 	if event.is_action_pressed("hook"):
 		hook.shoot()
+
+func take_damage(damage : int, damage_position : Vector2 = Vector2.INF):
+	if damage_position != Vector2.INF and not health_manager.invincible:
+		velocity = ((global_position - damage_position).normalized() + Vector2.UP / 2) * 200
+	health_manager.take_damage(damage)
+
+func die():
+	get_tree().reload_current_scene()
 
 class Wing:
 	var horizontal_speed : int

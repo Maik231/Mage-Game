@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://1yg58w5816kl"]
 
-[ext_resource type="Script" path="res://scripts/Spell System/Projectiles/Projectile Base.gd" id="1_0n2n5"]
+[ext_resource type="Script" path="res://scripts/Spell System/Projectiles/Projectile Base.gd" id="1_qttu2"]
 
 [node name="Straight Projectile" type="Area2D"]
-script = ExtResource("1_0n2n5")
+script = ExtResource("1_qttu2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 

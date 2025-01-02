@@ -12,10 +12,11 @@ region = Rect2(0, 144, 16, 16)
 
 [node name="StraightProjectileFireBall" type="Area2D"]
 collision_layer = 0
-collision_mask = 3
+collision_mask = 11
 script = ExtResource("1_vt743")
 speed = 400.0
 time_limit = 10.0
+damage = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.430407, -0.404053)

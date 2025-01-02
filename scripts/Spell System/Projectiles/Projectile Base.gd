@@ -3,7 +3,7 @@ extends Area2D
 @export var speed : float
 @export var time_limit : float
 @export var bouncing : bool
-@export var inaccuracy_in_degrees : int
+@export var inaccuracy_in_radians : float
 @export var damage : int
 
 var direction : Vector2
@@ -14,7 +14,7 @@ func _ready():
 	if time_limit:
 		$Timer.wait_time = time_limit
 		$Timer.start()
-	direction = (get_global_mouse_position() - global_position).normalized().rotated(randi_range(-inaccuracy_in_degrees, inaccuracy_in_degrees))
+	direction = (get_global_mouse_position() - global_position).normalized().rotated(randf_range(-inaccuracy_in_radians, inaccuracy_in_radians))
 
 
 func _process(delta):

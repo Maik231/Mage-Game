@@ -7,6 +7,7 @@ func process(delta : float) -> void:
 	pass
 
 func physics_process(delta : float) -> void:
+	player.move_and_slide()
 	if Input.is_action_just_pressed("jump"):
 		finished.emit(PlayerStates.JUMPING)
 	elif Input.get_axis("left", "right"):
