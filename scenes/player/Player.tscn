@@ -85,7 +85,7 @@ visible = false
 [node name="Spells" type="Node2D" parent="."]
 
 [node name="ProjectileSpell" parent="Spells" instance=ExtResource("13_xwrdh")]
-cast_cooldown = 0.2
+cast_cooldown = 0.1
 projectile = ExtResource("14_ltifo")
 
 [node name="HealthManager" parent="." instance=ExtResource("15_01med")]

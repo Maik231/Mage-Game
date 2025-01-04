@@ -28,10 +28,11 @@ sources/0 = SubResource("TileSetAtlasSource_882yt")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_jicic")]
+[node name="Player" parent="." instance=ExtResource("1_jicic")]
+unique_name_in_owner = true
 position = Vector2(539, 615)
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
 
 [node name="TileMaps" type="Node" parent="."]
@@ -45,4 +46,4 @@ tile_map_data = PackedByteArray("AAAWACMAAAAAAAUAAAATACUAAAAAAAUAAAAZACEAAAAAAAU
 tile_set = SubResource("TileSet_7qrle")
 
 [node name="Enemy1" parent="." instance=ExtResource("3_b1jpp")]
-position = Vector2(400, 615)
+position = Vector2(597, 551)
