@@ -37,3 +37,11 @@ shape = SubResource("RectangleShape2D_wo4i5")
 [node name="HealthManager" parent="." instance=ExtResource("4_dq8hc")]
 max_hp = 100
 invincible_time = 0.0
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 7)
+target_position = Vector2(-10, 0)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 7)
+target_position = Vector2(10, 0)
