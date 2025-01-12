@@ -16,8 +16,12 @@ func _ready():
 func _process(delta):
 	position += direction * speed * delta
 
-func _on_body_entered(body):
+func _on_body_entered(body : Node2D):
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
 	if position.y > mouse_start_position:
+		var collision := get_overlapping_bodies()
+		for col in collision:
+			if col.has_method("take_damage"):
+				col.take_damage(damage)
 		queue_free()

@@ -23,6 +23,12 @@ func _physics_process(delta):
 	
 	if is_on_floor() and (ray_cast_left.is_colliding() or ray_cast_right.is_colliding()):
 		velocity.y = -200
+		
+	if is_on_floor() and global_position.y < player.global_position.y:
+		for i in get_slide_collision_count():
+			var collision := get_slide_collision(i)
+			if collision.get_collider().name == "Platforms":
+				position.y += 1
 
 	velocity.x = lerpf(velocity.x, direction * SPEED, minf(1, 4 * delta))
 	move_and_slide()
