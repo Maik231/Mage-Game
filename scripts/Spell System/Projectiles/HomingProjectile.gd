@@ -19,6 +19,7 @@ func _physics_process(delta):
 	if target:
 		if target.is_queued_for_deletion():
 			target = null
+			look_for_new_target()
 		else:
 			direction = direction.lerp((target.global_position - global_position).normalized(), delta * 10).normalized()
 	
@@ -37,9 +38,15 @@ func _on_detection_range_body_entered(body: Node2D) -> void:
 func _on_detection_range_body_exited(body: Node2D) -> void:
 	if body == target:
 		target == null
+		look_for_new_target()
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
 	queue_free()
+
+func look_for_new_target():
+	var bodies = $"detection range".get_overlapping_bodies()
+	if bodies:
+		target = bodies[0]
