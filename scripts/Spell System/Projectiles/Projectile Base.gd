@@ -17,7 +17,7 @@ func _ready():
 func _physics_process(delta):
 	var collision_info := move_and_collide(direction * speed * delta)
 	if collision_info:
-		if bounce and collision_info.get_collider().name == "Enviroment":
+		if bounce and collision_info.get_collider().name in ["Enviroment", "Platforms"]:
 			direction = direction.bounce(collision_info.get_normal())
 		elif collision_info.get_collider().has_method("take_damage"):
 			collision_info.get_collider().take_damage(damage)

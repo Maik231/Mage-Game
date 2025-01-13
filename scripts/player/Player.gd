@@ -5,7 +5,7 @@ const SPEED : int = 120
 const JUMP_VELOCITY : int = -220
 const DECELLERATION : int = SPEED * 3
 const TERMINAL_VELOCITY : int = 400
-var has_wings : bool = true
+var has_wings : bool = false
 var wing : Wing
 @export var hook : Hook
 @export var current_spell : SpellBase
