@@ -17,11 +17,11 @@ func _ready():
 
 func _physics_process(delta):
 	if target:
-		if target.is_queued_for_deletion():
+		if is_instance_valid(target):
+			direction = direction.lerp((target.global_position - global_position).normalized(), delta * 10).normalized()
+		else:
 			target = null
 			look_for_new_target()
-		else:
-			direction = direction.lerp((target.global_position - global_position).normalized(), delta * 10).normalized()
 	
 	position += direction * speed * delta
 
