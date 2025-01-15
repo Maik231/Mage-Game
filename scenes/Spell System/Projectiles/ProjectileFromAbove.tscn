@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqa78mhjlk10y"]
+[gd_scene load_steps=6 format=3 uid="uid://bqa78mhjlk10y"]
 
 [ext_resource type="Texture2D" uid="uid://cwf11u7q8vmsp" path="res://aseprite/Tilemap.png" id="1_43qus"]
 [ext_resource type="Script" path="res://scripts/Spell System/Projectiles/ProjectileFromAbove.gd" id="1_crnlk"]
@@ -10,12 +10,16 @@ region = Rect2(16, 144, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubo4i"]
 size = Vector2(4, 5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ixg58"]
+radius = 50.0
+
 [node name="ProjectileFromAbove" type="Area2D"]
 collision_layer = 0
 collision_mask = 11
 script = ExtResource("1_crnlk")
 speed = 200
 damage = 20
+explosion_radius = 50.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_aiyec")
@@ -23,5 +27,10 @@ texture = SubResource("AtlasTexture_aiyec")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_ubo4i")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("CircleShape2D_ixg58")
+target_position = Vector2(0, 0)
+collision_mask = 8
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

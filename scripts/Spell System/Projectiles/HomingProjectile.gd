@@ -37,7 +37,7 @@ func _on_detection_range_body_entered(body: Node2D) -> void:
 
 func _on_detection_range_body_exited(body: Node2D) -> void:
 	if body == target:
-		target == null
+		target = null
 		look_for_new_target()
 
 
