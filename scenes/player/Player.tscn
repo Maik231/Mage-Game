@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://scripts/speed_label.gd" id="10_yd0vi"]
 [ext_resource type="PackedScene" uid="uid://crled6agy4y1w" path="res://scenes/hook.tscn" id="12_ic1co"]
 [ext_resource type="PackedScene" uid="uid://cogqokesa50uy" path="res://scenes/Spell System/Base Spell/ProjectileSpell.tscn" id="13_xwrdh"]
-[ext_resource type="PackedScene" uid="uid://bqa78mhjlk10y" path="res://scenes/Spell System/Projectiles/ProjectileFromAbove.tscn" id="14_kw4ws"]
+[ext_resource type="PackedScene" uid="uid://dw8m8vc0uwf5d" path="res://scenes/Spell System/Projectiles/granade.tscn" id="14_4syyy"]
 [ext_resource type="PackedScene" uid="uid://bi5qrtw67nbc5" path="res://scenes/HealthManager.tscn" id="15_01med"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hjf3y"]
@@ -86,7 +86,7 @@ visible = false
 
 [node name="ProjectileSpell" parent="Spells" instance=ExtResource("13_xwrdh")]
 cast_cooldown = 0.1
-projectile = ExtResource("14_kw4ws")
+projectile = ExtResource("14_4syyy")
 
 [node name="HealthManager" parent="." instance=ExtResource("15_01med")]
 max_hp = 100
